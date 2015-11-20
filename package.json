@@ -1,19 +1,31 @@
 {
   "name": "encrypt-env",
-  "version": "0.1.0",
-  "description": "",
+  "version": "0.2.2",
   "main": "index.js",
   "bin": {
-    "encryptenv": "./cli.js"
+    "encrypt-env": "./cli.js"
   },
   "author": "Joshua Karjala-Svendsen <joshua@fluxuries.com> (http://twitter.com/joshuakarjala)",
   "license": "ISC",
   "dependencies": {
-    "dotenv": "^1.2.0",
-    "pre-commit": "^1.1.2",
-    "ursa": "^0.9.1"
+    "minimist": "^1.2.0",
+    "untildify": "^2.1.0"
   },
-  "pre-commit": [
-    "encryptEnv"
-  ]
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joshuakarjala/encrypt-env.git"
+  },
+  "keywords": [
+    "keys",
+    "encryption"
+  ],
+  "bugs": {
+    "url": "https://github.com/joshuakarjala/encrypt-env/issues"
+  },
+  "homepage": "https://github.com/joshuakarjala/encrypt-env#readme",
+  "description": ""
 }

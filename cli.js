@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
-var encryptEnv = require('./index')();
+var argv = require('minimist')(process.argv.slice(2));
+var key = argv.env;
 
-var op = process.argv[2];
+var encryptEnv = require('./index')(key);
 
-if (op === '--decrypt') encryptEnv.decryptEnv();
-else encryptEnv.encryptEnv();
+if (argv.decrypt === true) encryptEnv.decryptEnv(argv.write);
+else encryptEnv.encryptEnv(key);

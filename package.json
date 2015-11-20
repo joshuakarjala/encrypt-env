@@ -1,0 +1,19 @@
+{
+  "name": "encrypt-env",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "bin": {
+    "encryptenv": "./cli.js"
+  },
+  "author": "Joshua Karjala-Svendsen <joshua@fluxuries.com> (http://twitter.com/joshuakarjala)",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^1.2.0",
+    "pre-commit": "^1.1.2",
+    "ursa": "^0.9.1"
+  },
+  "pre-commit": [
+    "encryptEnv"
+  ]
+}

@@ -4,9 +4,10 @@ var untildify = require('untildify');
 
 var algorithm = 'aes-256-cbc';
 
-module.exports = function (key) {
+module.exports = function (key, environments) {
   var that = {};
-  var environments = JSON.parse(fs.readFileSync('.encrypt-env.json'));
+
+  if (environments === undefined) environments = JSON.parse(fs.readFileSync('.encrypt-env.json'));
   var env = environments[key];
 
   var encrypt = function (key, text) {

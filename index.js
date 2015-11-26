@@ -4,11 +4,17 @@ var untildify = require('untildify');
 
 var algorithm = 'aes-256-cbc';
 
-module.exports = function (key, environments) {
+module.exports = function (key, aesKeys) {
   var that = {};
+  var aesKey;
 
-  if (environments === undefined) environments = JSON.parse(fs.readFileSync('.encrypt-env.json'));
-  var env = environments[key];
+  if (aesKeys === undefined) {
+    var environments = JSON.parse(fs.readFileSync('.encrypt-env.json'));
+    var env = environments[key];
+    aesKey = fs.readFileSync(untildify(env.aesKey));
+  } else {
+    aesKey = aesKeys[key];
+  }
 
   var encrypt = function (key, text) {
     key = key.toString().trim();
@@ -44,7 +50,6 @@ module.exports = function (key, environments) {
     if (write !== true) write = false;
 
     if (encryptedEnv === undefined) encryptedEnv = fs.readFileSync(untildify(env.envFile + '.enc'));
-    var aesKey = fs.readFileSync(untildify(env.aesKey));
 
     var decryptedEnv = decrypt(aesKey, encryptedEnv);
 
@@ -56,14 +61,17 @@ module.exports = function (key, environments) {
     return decryptedEnv;
   };
 
-  that.encryptEnv = function () {
-    var decryptedEnv = fs.readFileSync(env.envFile);
-    var aesKey = fs.readFileSync(untildify(env.aesKey));
+  that.encryptEnv = function (write, decryptedEnv) {
+    if (write !== true) write = false;
 
+    if (decryptedEnv === undefined) decryptedEnv = fs.readFileSync(env.envFile);
     var encryptedEnv = encrypt(aesKey, decryptedEnv);
 
-    fs.openSync(untildify(env.envFile + '.enc'), 'w+');
-    fs.writeFileSync(untildify(env.envFile + '.enc'), encryptedEnv);
+    if (write) {
+      fs.openSync(untildify(env.envFile + '.enc'), 'w+');
+      fs.writeFileSync(untildify(env.envFile + '.enc'), encryptedEnv);
+    }
+
     return encryptedEnv;
   };
 

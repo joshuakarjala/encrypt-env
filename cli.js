@@ -6,4 +6,4 @@ var key = argv.env;
 var encryptEnv = require('./index')(key);
 
 if (argv.decrypt === true) encryptEnv.decryptEnv(argv.write);
-else encryptEnv.encryptEnv(key);
+else encryptEnv.encryptEnv(argv.write);

@@ -40,10 +40,10 @@ module.exports = function (key, environments) {
     return decryptedText;
   };
 
-  that.decryptEnv = function (write) {
+  that.decryptEnv = function (write, encryptedEnv) {
     if (write !== true) write = false;
 
-    var encryptedEnv = fs.readFileSync(untildify(env.envFile + '.enc'));
+    if (encryptedEnv === undefined) encryptedEnv = fs.readFileSync(untildify(env.envFile + '.enc'));
     var aesKey = fs.readFileSync(untildify(env.aesKey));
 
     var decryptedEnv = decrypt(aesKey, encryptedEnv);

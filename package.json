@@ -1,6 +1,6 @@
 {
   "name": "encrypt-env",
-  "version": "0.2.5",
+  "version": "0.2.6",
   "main": "index.js",
   "bin": {
     "encrypt-env": "./cli.js"
@@ -9,6 +9,7 @@
   "license": "ISC",
   "dependencies": {
     "minimist": "^1.2.0",
+    "randomstring": "^1.1.4",
     "untildify": "^2.1.0"
   },
   "devDependencies": {},

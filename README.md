@@ -1,6 +1,9 @@
 # encrypt-env
 Share encrypted environment files through Git
 
+- [Basic usage as CLI tool](https://github.com/joshuakarjala/encrypt-env#basic-usage-as-cli-tool)
+- [In code usage](https://github.com/joshuakarjala/encrypt-env#in-code-usage)
+
 # Basic usage as CLI tool
 `encrypt-env` looks for a file named `.encrypt-env.json` which is a map of your different environments and their encryption.
 

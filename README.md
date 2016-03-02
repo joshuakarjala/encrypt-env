@@ -24,6 +24,11 @@ Share encrypted environment files through Git
 }
 ```
 
+You can generate AES keys from the CLI
+```shell
+encrypt-env generate
+```
+
 You can now use the `encrypt-env` CLI to encrypt and decrypt you environment files:
 
 ```shell

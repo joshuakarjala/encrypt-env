@@ -10,16 +10,16 @@ if (argv._ !== undefined && argv._[0] === 'generate') {
 }
 
 var key = argv.env;
-var write = argv.write
+var write = argv.write !== undefined;
 
 var encryptEnv = require('./index')(key);
 
 if (argv.decrypt === true) {
-  var d = encryptEnv.decryptEnv();
+  var d = encryptEnv.decryptEnv(write);
   if(!write) console.log(d);
 }
 else {
-  var e = encryptEnv.encryptEnv(argv.write);
+  var e = encryptEnv.encryptEnv(write);
   if(!write) console.log(e);
 }
 

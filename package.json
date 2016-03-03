@@ -1,6 +1,6 @@
 {
   "name": "encrypt-env",
-  "version": "0.2.7",
+  "version": "0.2.8",
   "main": "index.js",
   "bin": {
     "encrypt-env": "./cli.js"

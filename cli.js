@@ -5,7 +5,7 @@ var argv = require('minimist')(process.argv.slice(2));
 // Generate a 256bit AES key
 if (argv._ !== undefined && argv._[0] === 'generate') {
   var randomstring = require('randomstring');
-  console.log(randomstring.generate(33));
+  console.log(randomstring.generate(32));
   process.exit(0);
 }
 
